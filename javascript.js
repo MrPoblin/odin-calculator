@@ -44,6 +44,7 @@ function operate(num1, num2, op){
                 calculator.number1 = "0";
             }
      }
+     calculator.operator = 0;
 }
 
 display.textContent = 0;
@@ -90,8 +91,20 @@ function addDot(numSlot){
     }
 }
 
+const keyboardInput = document.querySelector(".keyboard");
+document.addEventListener("keypress", (event) =>{
+    input(event.key);
+    if(event.key == "Enter"){
+        input("=");
+    }
+})
+
 function buttonClicked(e){
     let content = e.srcElement.textContent;
+    input(content);
+}
+
+function input(content){
     if(parseInt(content) || parseInt(content) === 0){
         switch(lastClicked){
             case 0:
